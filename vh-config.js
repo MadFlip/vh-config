@@ -223,23 +223,23 @@ const configCreate = () => {
 
     // Config template
     const template = `<VirtualHost *:8080>
-        DocumentRoot ${workDir}/web
+        DocumentRoot ${workDir}/wordpress
         ServerName ${projectName}.local.blee.ch
-        RewriteCond ${workDir}/web/%{REQUEST_FILENAME} -f
+        RewriteCond ${workDir}/wordpress/%{REQUEST_FILENAME} -f
         RewriteRule ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:90${options.php}${workDir}/wordpress/$1 [P,QSA,L]
-        <Directory ${workDir}/web>
+        <Directory ${workDir}/wordpress>
             Options -Indexes +FollowSymLinks -MultiViews
             AllowOverride All
             Require all granted
         </Directory>
     </VirtualHost>
     <VirtualHost *:8443>
-        DocumentRoot ${workDir}/web
+        DocumentRoot ${workDir}/wordpress
         ServerName ${projectName}.local.blee.ch
-        RewriteCond ${workDir}/web/%{REQUEST_FILENAME} -f
+        RewriteCond ${workDir}/wordpress/%{REQUEST_FILENAME} -f
         RewriteRule ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:90${options.php}${workDir}/wordpress/$1 [P,QSA,L]
         Include "/usr/local/etc/httpd/ssl/ssl-shared-cert.inc"
-        <Directory ${workDir}/web>
+        <Directory ${workDir}/wordpress>
             Options -Indexes +FollowSymLinks -MultiViews
             AllowOverride All
             Require all granted
