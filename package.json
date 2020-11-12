@@ -1,6 +1,6 @@
 {
-  "name": "@nikola_bleech/vh-config",
-  "version": "0.3.0",
+  "name": "@madflip/vh-config",
+  "version": "0.3.1",
   "description": "Virtual Host Config Utility",
   "main": "vh-config.js",
   "scripts": {
