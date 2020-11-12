@@ -24,7 +24,7 @@ let options = {
     force: 0,
     restart: 0,
     overwrite: 0,
-    php: 72
+    php: 73
 }
 
 // Names
@@ -226,7 +226,7 @@ const configCreate = () => {
         DocumentRoot ${workDir}/web
         ServerName ${projectName}.local.blee.ch
         RewriteCond ${workDir}/web/%{REQUEST_FILENAME} -f
-        RewriteRule ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:90${options.php}/${workDir}/web/$1 [P,QSA,L]
+        RewriteRule ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:90${options.php}${workDir}/wordpress/$1 [P,QSA,L]
         <Directory ${workDir}/web>
             Options -Indexes +FollowSymLinks -MultiViews
             AllowOverride All
@@ -237,7 +237,7 @@ const configCreate = () => {
         DocumentRoot ${workDir}/web
         ServerName ${projectName}.local.blee.ch
         RewriteCond ${workDir}/web/%{REQUEST_FILENAME} -f
-        RewriteRule ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:90${options.php}${workDir}/web/$1 [P,QSA,L]
+        RewriteRule ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:90${options.php}${workDir}/wordpress/$1 [P,QSA,L]
         Include "/usr/local/etc/httpd/ssl/ssl-shared-cert.inc"
         <Directory ${workDir}/web>
             Options -Indexes +FollowSymLinks -MultiViews
